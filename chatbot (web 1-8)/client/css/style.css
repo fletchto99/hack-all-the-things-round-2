@@ -1,0 +1,117 @@
+html, body, body > .container, body > .container > .row, body > .container > .row > div{ height: 100%; }
+body{
+	background: #333;
+	color: #AAA;
+}
+h1{
+	margin-top: 10px;
+}
+.convo-container{
+	overflow-y: auto;
+	padding-bottom: 5px;
+	height: calc( 100% - 165px );
+	padding-top: 20px;
+}
+.convo-container.shadow{
+	box-shadow: inset 0px 20px 20px -15px rgba(0,0,0,.3);
+}
+.speech-bubble{
+	background-color: #666;
+	border-radius: 6px;
+	padding: 5px 10px;
+    margin-bottom: 15px;
+    display: inline-block;
+    position: relative;
+    max-width: 80%;
+}
+.speech-bubble:after{
+	content: ' ';
+    position: absolute;
+    width: 0;
+    height: 0;
+    left: 0px;
+    right: auto;
+    top: auto;
+    bottom: -15px;
+    border: 15px solid;
+    border-color: transparent transparent transparent #666;
+}
+.me .speech-bubble{
+	background-color: #222;
+	text-align: left;
+}
+.me .speech-bubble:after{
+	left: initial;
+	right: 0;
+    border-color: transparent #222 transparent transparent;
+}
+.me{
+	text-align: right;
+}
+.sending{
+	opacity: .5;
+}
+.failed{
+	color: #F00;
+}
+
+.message-container{
+	margin: 20px 0;
+}
+textarea{
+	background-color: rgba(255, 255, 255, 0.28);
+	color: #000;
+	padding: 5px 10px;
+    border: none;
+    border-radius: 6px;
+    width: 100%;
+}
+textarea:focus{
+	outline-width: 4px;
+}
+::placeholder{
+	color: #444;
+}
+.message-container{
+	display: flex;
+}
+.message-container button{
+	margin-left: 10px;
+	border-radius: 6px;
+}
+.btn-dark {
+    background-color: #222222;
+    border-color: #222222;
+}
+.notification{
+	position: fixed;
+    top: 0;
+    right: 0;
+    background: rgba(0,0,0,.5);
+    padding: 10px 15px;
+    border-radius: 3px;
+    margin: 15px;
+	right: -100%;
+	opacity: 0;
+	transition: right 1s, opacity 1s;
+}
+.notification.show{
+    right: 0;
+    opacity: 1;
+}
+.notification button{
+	background: transparent;
+    border: none;
+    color: #AAA;
+    font-size: 1.4em;
+    line-height: 1em;
+	cursor: pointer;
+	padding: 0;
+    margin-left: 5px;
+}
+.hide{
+	display: none;
+}
+.secret{
+	background: url('../img/secret.png');
+}

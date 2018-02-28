@@ -1,0 +1,2 @@
+Just ask the bot: Where is the flag?
+flag{All_Y0u_h4d_2_d0_is_asK}

@@ -1,0 +1,2 @@
+in the style sheet, there is an unused style with a background image that has the flag.
+flag{N0_oNe_ev3r_cheCks_thE_CSS}

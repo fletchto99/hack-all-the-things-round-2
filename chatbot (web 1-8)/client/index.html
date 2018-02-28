@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="supportApp">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>E Corp Support</title>
+
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="icon" type="image/x-icon" href="img/favicon.ico">
+  </head>
+  <body>
+  	<div class="container" ng-controller="SupportController as support">
+	  <div class="row">
+	  	<div class="col-sm-12">
+	  		<h1>Support Chat</h1>
+	  		<div class="convo-container" id="convo-container" ng-class="{'shadow':support.convoTallerThanView()}">
+	  			<div class="line" ng-repeat="(key, message) in support.messages" ng-class="{'me': message.author==='me'}">
+	  				<div class="speech-bubble" ng-class="{'sending':message.status==='sending'}">{{message.text}}</div>
+	  			</div>
+	  		</div>
+	  		<div class="message-container">
+		  		<textarea id="message-textarea" placeholder="Write a message" ng-model="support.message" ng-keypress="support.keyPress($event)"></textarea>
+		  		<button class="btn btn-dark" ng-click="support.sendMessage()">Send</button>
+		  		<button class="btn btn-success" ng-class="{'hide':!support.isAdmin}" ng-click="support.getAdminProfile()">Check Profile Status</button>
+		  	</div>
+	  	</div>
+	  </div>
+
+	  <div class="notification" ng-class="{'show':support.showNotification}">
+	  	{{support.notification}}
+	  	<button ng-click="support.closeNotification()">&times;</button>
+	  </div>
+
+	</div>
+  	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.7/angular.min.js"></script>
+  	<script>
+    	var supportApp = angular.module('supportApp', []);
+    	document.cookie = 'session=flag{notTheRealFlag}';
+    </script>
+  	<script src="js/SupportController.js"></script>
+  	<script src="js/supportService.js"></script>
+  </body>
+</html>

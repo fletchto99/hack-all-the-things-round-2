@@ -1,0 +1,7 @@
+Step 1: access chatbot web app (to get a cookie)
+Step 2: determine the api to send requests to (/api/make-admin) from the service
+Step 3: make a webserver with a page that will make a request to that end point
+Step 4: send the url to your webserver to the chatbot
+Step 5: try to load admin profile (from the hidden button beside the send button)
+
+flag{PuT_The_ADmIn_2_w0Rk}

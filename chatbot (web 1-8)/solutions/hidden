@@ -1,0 +1,3 @@
+After downloading the backup.zip, there is a hidden file in the images directory called .hidden.txt
+Open it up and read the ascii art
+Flag{The-files-are-in-the-computer}

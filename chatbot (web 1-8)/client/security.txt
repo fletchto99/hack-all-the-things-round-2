@@ -1,0 +1,11 @@
+# Our security address
+Contact: mailto:security@example.com
+
+# Our PGP key
+Encryption: https://example.com/pgp-key.txt
+
+# Our security policy
+Policy: https://example.com/security-policy.html
+
+# Our Flag
+Flag: flag{S3cur1ty_d0t_tXt}

@@ -1,0 +1,2 @@
+After downloading the backup.zip, look at the source for the html of the old website
+flag{Tr4vEl-bACK-iN-Tim3}

@@ -1,0 +1,4 @@
+In the backup.zip of the website (found via robots.txt), there is a file in the offline directory. crack open the .rar file by brute forcing the password.
+You should be able to guess the password.
+The password is password
+flag{W34k_Pa$$w0rds_aRe_weak}
