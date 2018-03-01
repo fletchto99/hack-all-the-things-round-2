@@ -1,0 +1,4 @@
+Morse Code
+hint: all lowercase
+
+flag{whatarethesedotsandlines}

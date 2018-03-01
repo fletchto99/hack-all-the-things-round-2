@@ -1,0 +1,3 @@
+The cypher is hex encoded. Decode that to binary and XOR it with the character f
+
+flag{XOR-enCryptI0n}

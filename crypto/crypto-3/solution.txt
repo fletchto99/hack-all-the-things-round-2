@@ -1,0 +1,4 @@
+Vigenere Cipher
+key: FOUR
+
+flag{maybe-this-should-be-bellaso-cipher}
