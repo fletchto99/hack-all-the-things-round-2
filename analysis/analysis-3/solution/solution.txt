@@ -1,0 +1,5 @@
+use binwalk to separate the jpg from the rar. Extracting the rar will extract the flag in a text file
+
+binwalk -e challenge.jpg
+
+flag{you_can_separate_the_zip_from_the_img}
