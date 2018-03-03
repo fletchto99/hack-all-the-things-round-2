@@ -1,0 +1,210 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+    <style>
+      #outputArea{
+        display: inline-block;
+      }
+      #outputArea div{
+        display: inline-block;
+      }
+      #outputArea .signature{
+        display: block;
+        text-align: center;
+      }
+    </style>
+    <title>Zodiac Cipher Generator</title>
+  </head>
+  <body>
+    <h1>Zodiac Cipher Generator</h1>
+    <div class="container">
+      <div class="row">
+        <div class="col-sm-12">
+          <p>Type your plain text here. Note: all special characters and spaces will be removed.</p>
+          <p>This is based off of the solved 408 cipher: <a href="http://www.zodiackiller.com/VTHCipher.html" target="_blank">http://www.zodiackiller.com/VTHCipher.html</a></p>
+          <textarea class="form-control" id="inputText">zodiac likes dangerous game</textarea>
+          <div id="outputArea"></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+    <script>
+      $(() => {
+        const map408cipher = {
+          a: [
+            'g.jpg',
+            's.jpg',
+            'bl.jpg',
+            'n8.jpg',
+          ],
+          b: [
+            'v.jpg',
+          ],
+          c: [
+            'be.jpg',
+          ],
+          d: [
+            'bf.jpg',
+            'zodiac.jpg',
+          ],
+          e: [
+            'z.jpg',
+            'bp.jpg',
+            'w.jpg',
+            'plus.jpg',
+            'n6.jpg',
+            'n.jpg',
+            'e.jpg',
+          ],
+          f: [
+            'j.jpg',
+            'q.jpg',
+          ],
+          g: [
+            'r.jpg',
+          ],
+          h: [
+            'm.jpg',
+            'phi.jpg',
+          ],
+          i: [
+            'n9.jpg',
+            'p.jpg',
+            'u.jpg',
+            'bk.jpg',
+          ],
+          j: [
+            'bar.jpg', //not real
+          ],
+          k: [
+            'slash.jpg',
+          ],
+          l: [
+            'sqr.jpg',
+            'b.jpg',
+            'sq.jpg',
+          ],
+          m: [
+            'bq.jpg',
+          ],
+          n: [
+            'o.jpg',
+            'caret.jpg',
+            'd.jpg',
+            'theta.jpg',
+          ],
+          o: [
+            'x.jpg',
+            'funnyi.jpg',
+            't.jpg',
+            'bd.jpg',
+          ],
+          p: [
+            'sidek.jpg',
+          ],
+          q: [
+            'dash.jpg' //not real
+          ],
+          r: [
+            'perp.jpg',
+            'br.jpg',
+            'backslash.jpg',
+          ],
+          s: [
+            'f.jpg',
+            'sqd.jpg',
+            'k.jpg',
+            'n7.jpg',
+          ],
+          t: [
+            'h.jpg',
+            'i.jpg',
+            'n5.jpg',
+            'l.jpg',
+          ],
+          u: [
+            'y.jpg',
+          ],
+          v: [
+            'bc.jpg',
+          ],
+          w: [
+            'a.jpg',
+          ],
+          x: [
+            'sqe.jpg' //not real
+          ],
+          y: [
+            'dot.jpg' //not real
+          ],
+          z: [
+            'tao.jpg', //not real
+          ]
+        }
+
+        getRandomSubChar = (arr) => {
+          const rand = Math.floor(Math.random() * arr.length);
+          console.log(arr,arr[rand])
+          return arr[rand]
+        }
+
+        $('#inputText').bind('input propertychange', () => {
+          $('#outputArea').html('');
+          let input = $('#inputText').val().replace(/[^\w]/gi, '').toLowerCase().split('');
+          const targetWidth = Math.ceil(Math.sqrt(input.length));
+          let fillLength = 0; // to put random chars at the end to fill last row
+
+          for(let i=0;i<input.length;i+=1){
+            const currentChar = getRandomSubChar(map408cipher[input[i]]);
+            $('#outputArea').append(`<div><img src='img/${currentChar}' /></div>`);
+
+            if(i%targetWidth===targetWidth-1 && i!==0)
+              $('#outputArea').append(`<br>`);
+            
+            fillLength = targetWidth-(i%targetWidth+1);
+          }
+
+          //fill to end of row with random chars
+          for(let i=0;i<fillLength;i+=1){
+            const randomCharKey = Object.keys(map408cipher)[Math.floor(Math.random() * Object.keys(map408cipher).length)];
+            const randomChar = getRandomSubChar(map408cipher[randomCharKey]);
+            $('#outputArea').append(`<div><img src='img/${randomChar}' /></div>`);
+          }
+
+          $('#outputArea').append(`<br><div class="signature"><img src='img/zodiac.jpg' /></div>`);
+        });
+      });
+
+// Unused:
+// bb.jpg
+// bj.jpg
+// blank.jpg
+// by.jpg
+// c.jpg
+// dot.jpg
+// gt.jpg
+// idl.jpg
+// idr.jpg
+// lt.jpg
+// n1.jpg
+// n2.jpg
+// n3.jpg
+// n4.jpg
+// pf.jpg
+// shit.jpg
+// sql.jpg
+    </script>
+  </body>
+</html>

@@ -1,0 +1,10 @@
+The cipher was generated using the tool here.
+Although this tool is propriatary, the characters representations are taken from the Zodiac Killer's 408 cipher.
+http://www.zodiackiller.com/VTHCipher.html
+
+This is a substitution cipher but is more complex since the same character can be represented by many symbols.
+No spaces or special characters exist in this type of cipher.
+The last several characters are just filler to reach the end of the row. They are to be discarded.
+The centered zodiac symbol at the bottom of the message is a signature. This should help in identifying the type of cipher.
+
+flag{zodiaclikesdangerousgame}

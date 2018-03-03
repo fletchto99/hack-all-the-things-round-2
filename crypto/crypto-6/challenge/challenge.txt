@@ -1,0 +1,3 @@
+title: So many options
+hint (if required): 408
+format: flag{planetextasonewordalllowercase}
