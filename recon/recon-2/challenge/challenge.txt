@@ -1,0 +1,4 @@
+title: I think the server is not working
+challenge: <URL of server. do not include port>
+
+Setup Note: Server should be running on port 1337

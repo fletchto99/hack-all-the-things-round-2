@@ -1,0 +1,3 @@
+nmap to find the right port: 1337
+
+flag{1337-nmap-sk1llz-c4n-fInD-4nytH1ng}
