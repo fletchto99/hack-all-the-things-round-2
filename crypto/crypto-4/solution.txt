@@ -1,0 +1,3 @@
+reverse the string and base64 decode. you can tell because it starts with "=="
+
+flag{if-it-is-bas64-backwards-does-that-make-it-base-46-question-mark}
