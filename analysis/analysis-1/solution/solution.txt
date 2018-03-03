@@ -1,0 +1,9 @@
+The image is a bmp file. You will need to edit the binary of the file. Specifically the Bifmap file header
+https://en.wikipedia.org/wiki/BMP_file_format#Bitmap_file_header
+
+the beginning of the file looks like:
+42 4d 50 30 12 00 00 00 00 00 16 27 09 00 28
+To get the original it should look like:
+42 4d 50 30 12 00 00 00 00 00 36 00 00 00 28
+
+flag{S0c1eTy}
