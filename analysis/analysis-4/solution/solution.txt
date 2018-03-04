@@ -1,0 +1,5 @@
+Open the image in a tool that will show ascii values and look at the end of the file
+
+Alternatively: strings challenge.png | grep flag
+
+flag{LookingAtTheBinary}
