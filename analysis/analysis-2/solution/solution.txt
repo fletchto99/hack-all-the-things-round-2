@@ -1,0 +1,9 @@
+Stepping through the binary of the file and looking only at the blue values, make an array of all of the 0s and 1s untill hitting the delimiter 1111111111111110.
+Then take that array (minus the delimiter) and convert it from binary to a string of characters
+
+the included steg.py file will help automate this.
+source code: http://www.mediafire.com/file/hyjimlh8pel7q9x/code.txt
+
+python steg.py -d gpu.png
+
+flag{whaT_yoUR_EyEs_doNt_See}

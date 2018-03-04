@@ -1,0 +1,3 @@
+title: Out of the blue
+hint: "until 1111111111111110"
+setup note: although the title and hint give a lot of help, it will likely be required do to the difficulty
