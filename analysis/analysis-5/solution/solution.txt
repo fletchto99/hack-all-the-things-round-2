@@ -1,0 +1,3 @@
+View the spectogram in audacity (https://www.youtube.com/watch?v=VZbZa99ocPU)
+
+flag{Listen-Mor3-Closelier}
