@@ -1,0 +1,3 @@
+take the hash/ address from the challenge and put it into TOR (and append .onion of course)
+
+flag{Peel-bAck-Th3-L4y3rz-0f-thE-oNi0n-RouTer}

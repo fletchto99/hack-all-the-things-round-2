@@ -1,0 +1,3 @@
+title: Peel Back the Layers
+challenge: <hash (without the .onion)>
+setup instructions: host the html file on a tor hidden service
