@@ -18,28 +18,13 @@ const self = module.exports = {
 		    return _page.open(url);
 		  })
 		  .then(status => {
-		  	// _page.property('content').then((content)=>{
-		  	// 	console.log('content', content);
-		  	// });
 
 		  	//clean up
 		    _page.close().then(()=>{
 		    	_ph.exit();
 		    });
 		    return status;
-
-		    // return _page.property('content');// <-- if you want access to content, return this to pass it onto the next .then (also uncomment that) 
 		  })
-		 //  .then(content => {
-		 //    console.log(content);
-
-		 //    return _page.render(content).then(()=>{
-			//     _page.close().then(()=>{
-			//     	_ph.exit();
-			//     });
-		 //    });
-			// return content;
-		 //  })
 		  .catch(e => console.log(e));
 
 		return pageload;

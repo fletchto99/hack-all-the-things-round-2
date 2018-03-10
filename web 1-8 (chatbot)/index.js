@@ -18,7 +18,6 @@ const favicon = require('serve-favicon');
 const browser = require('./browser');
 
 const natural = require('natural');
-// const tokenizer = new natural.WordTokenizer();
 
 const botAccessKey = '6c87a8b1eae4659914f73c0d18f3a7158525bdf9ecf15ab5c6a0d88230c1fd7ea8a38922bdaa5d30150f8960b5cfc92941c8c6c8b1a8c83dd3cfd46c26716fea';
 const users = [];
@@ -30,6 +29,8 @@ app.use(bodyParser.json());
 router.use((req, res, next)=>{
 	next();
 });
+
+const getExpiryTime = () => moment().utc().add(1, 'days').valueOf();
 
 router.post('/send', function(req, res){
   const query = req.body.message;
@@ -138,13 +139,13 @@ router.get('/get-uid', (req, res) => {
   const indexOfUser = users.findIndex(i => i.uid === uid);
 
   if(uid!=='' && indexOfUser>-1){ // update existing user
-	users[indexOfUser].expiry = moment().utc().valueOf();
-	uid = users[indexOfUser].uid;
+  	users[indexOfUser].expiry = getExpiryTime();
+  	uid = users[indexOfUser].uid;
   }else{ // create new user
 	uid = sha512(Math.random().toString()+moment().format()).substring(0, 12);
 	users.push({
 		uid,
-		expiry: moment().utc().add(1, 'days').valueOf(),
+    expiry: getExpiryTime(),
 		isAdmin: false
 	})
   }
@@ -180,13 +181,12 @@ router.get('/admin-profile', (req, res) => {
 
 app.use('/api', router);
 
-//TODO: periodically clean up users array
-//Also: make sure that sending a requests updates cookie/ session
-// setInterval(()=>{
-// 	for(let i=0;i<users.length;i+=1){
-// 		if(moment().utc().valueOf()>users[i].expiry){
-// 			users.splice(i, 1);
-// 			i--;
-// 		}
-// 	}
-// }, 5*60*1000); // 5 min
+// periodically clean up users array
+setInterval(()=>{
+  for(let i=0;i<users.length;i+=1){
+    if(moment().utc().valueOf()>users[i].expiry){
+      users.splice(i, 1);
+      i--;
+    }
+  }
+}, 5*60*1000); // 5 min
