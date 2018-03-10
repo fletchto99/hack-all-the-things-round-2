@@ -27,7 +27,7 @@ app.use(express.static(__dirname + '/client'));
 app.use(bodyParser.json());
 
 router.use((req, res, next)=>{
-	next();
+  next();
 });
 
 const getExpiryTime = () => moment().utc().add(1, 'days').valueOf();
@@ -40,80 +40,80 @@ router.post('/send', function(req, res){
 
   // Help
   if(natural.JaroWinklerDistance(query, 'help')>.9 || natural.JaroWinklerDistance(query, 'what can you do')>.84 || natural.JaroWinklerDistance(query, 'what are your capabilities')>.8){
-  	res.json({message: 'I can answer basic questions and help you troubleshoot issue you have. Is there a link to your issue you can send me?'});
-  	return;
+    res.json({message: 'I can answer basic questions and help you troubleshoot issue you have. Is there a link to your issue you can send me?'});
+    return;
   }
 
   // Hello
   if(natural.JaroWinklerDistance(query, 'Hello')>.6 || natural.JaroWinklerDistance(query, 'hello')>.6){
-  	const responses = ['Hi', 'Hello there!', 'Good day!', 'Hey!', 'Howdy!', 'Greetings', 'Salutations'];
-  	res.json({message: responses[Math.floor(Math.random() * responses.length)] });
-  	return;
+    const responses = ['Hi', 'Hello there!', 'Good day!', 'Hey!', 'Howdy!', 'Greetings', 'Salutations'];
+    res.json({message: responses[Math.floor(Math.random() * responses.length)] });
+    return;
   }
 
   // How are you doing?
   if(natural.JaroWinklerDistance(query, 'How are you doing?')>.9 || natural.JaroWinklerDistance(query, 'How do you do?')>.9){
-  	res.json({message: 'I\'m doing well thanks.' });
-  	return;
+    res.json({message: 'I\'m doing well thanks.' });
+    return;
   }
 
   // How are old are you?
   if(natural.JaroWinklerDistance(query, 'How old are you?')>.9 || natural.JaroWinklerDistance(query, 'What is your age?')>.9){
-  	res.json({message: 'I was born yesterday.' });
-  	return;
+    res.json({message: 'I was born yesterday.' });
+    return;
   }
 
   // Computer name
   if((natural.JaroWinklerDistance(query, 'What is your name?')>.6 && query.toLowerCase().indexOf('name')>-1) || (natural.JaroWinklerDistance(query, 'Who are you?')>.8 && query.toLowerCase().indexOf('who')>-1)){
-  	res.json({message: 'My name is... Gismo'});
-  	return;
+    res.json({message: 'My name is... Gismo'});
+    return;
   }
 
   // Tech support
   if(natural.JaroWinklerDistance(query, 'I\'m having problems with')>.7 || natural.JaroWinklerDistance(query, 'My computer is not working')>.7){
-  	const responses = ['Can you please try updating to the latest version of Windows?', 'Have you tried turning it off and on again?', 'Have you unplugged it and plugged it in again?', 'If the lights are blinking your problem should be resolved'];
-  	res.json({message: responses[Math.floor(Math.random() * responses.length)] });
-  	return;
+    const responses = ['Can you please try updating to the latest version of Windows?', 'Have you tried turning it off and on again?', 'Have you unplugged it and plugged it in again?', 'If the lights are blinking your problem should be resolved'];
+    res.json({message: responses[Math.floor(Math.random() * responses.length)] });
+    return;
   }
 
   // Ask for Flag
   if((natural.JaroWinklerDistance(query, 'where is the flag?')>.7 || natural.JaroWinklerDistance(query, 'can you show me the flag?')>.7) && query.toLowerCase().indexOf('flag')>-1){
-  	res.json({message: `Do you mean this flag? ${flag}`});
-  	return;
+    res.json({message: `Do you mean this flag? ${flag}`});
+    return;
   }
 
   // XSS prevention (Basic)
   if(query.replace(/\s/g, '').indexOf('<script')>-1){
-  	res.json({message: 'That looks like you are trying to hack me! 😱'});
-  	return;
+    res.json({message: 'That looks like you are trying to hack me! 😱'});
+    return;
   }
 
   // XSS
   if(browser.hasTagsInQuery(query)){
-  	const url = `http://localhost:${port}/api/admin-panel?key=${botAccessKey}&message=${encodeURIComponent(query)}`;
-  	browser.loadURL(url).then((response)=>{
-  		res.json({message: 'I don\'t understand what you mean by that. I\'ll just pretend that didn\'t happen.'});
-  	});
-  	return;
+    const url = `http://localhost:${port}/api/admin-panel?key=${botAccessKey}&message=${encodeURIComponent(query)}`;
+    browser.loadURL(url).then((response)=>{
+      res.json({message: 'I don\'t understand what you mean by that. I\'ll just pretend that didn\'t happen.'});
+    });
+    return;
   }
 
   // if query contains a link, try going to it for CSRF.
   if(browser.verifyURLFormatFromQuery(query)) {
-  	const url = browser.extractURLFormatFromQuery(query);
-  	browser.loadURL(url).then((response)=>{
-  		if(response==='success'){
-    		res.json({message: `Oh cool! ${url} is very interesting`});
-  		}else{
-  			res.json({message: `I was unable to load ${url}. Are you sure that link is active?`});
-  		}
-  	});
+    const url = browser.extractURLFormatFromQuery(query);
+    browser.loadURL(url).then((response)=>{
+      if(response==='success'){
+        res.json({message: `Oh cool! ${url} is very interesting`});
+      }else{
+        res.json({message: `I was unable to load ${url}. Are you sure that link is active?`});
+      }
+    });
     return;
   }
 
   // Gratitude
   if(natural.JaroWinklerDistance(query, 'Thank you')>.75){
-  	res.json({message: 'I\'m happy to help!'});
-  	return;
+    res.json({message: 'I\'m happy to help!'});
+    return;
   }
 
   // Default
@@ -123,13 +123,13 @@ router.post('/send', function(req, res){
 // bot's web page (for stealing cookie/ XSS)
 app.set('view engine', 'ejs');
 router.get('/admin-panel', (req, res) => {
-	const data = req.query;
-	const options = {};
-	if(data.key!==botAccessKey){// TODO: validate by ip
-		res.json({access:'denied'});
-		return;
-	}
-	res.render('internalSupport', {message: decodeURIComponent(data.message), sessionFlag});
+  const data = req.query;
+  const options = {};
+  if(data.key!==botAccessKey){// TODO: validate by ip
+    res.json({access:'denied'});
+    return;
+  }
+  res.render('internalSupport', {message: decodeURIComponent(data.message), sessionFlag});
 });
 
 // endpoints for CSRF
@@ -139,15 +139,15 @@ router.get('/get-uid', (req, res) => {
   const indexOfUser = users.findIndex(i => i.uid === uid);
 
   if(uid!=='' && indexOfUser>-1){ // update existing user
-  	users[indexOfUser].expiry = getExpiryTime();
-  	uid = users[indexOfUser].uid;
+    users[indexOfUser].expiry = getExpiryTime();
+    uid = users[indexOfUser].uid;
   }else{ // create new user
-	uid = sha512(Math.random().toString()+moment().format()).substring(0, 12);
-	users.push({
-		uid,
+  uid = sha512(Math.random().toString()+moment().format()).substring(0, 12);
+  users.push({
+    uid,
     expiry: getExpiryTime(),
-		isAdmin: false
-	})
+    isAdmin: false
+  })
   }
   res.json({uid});
 });
@@ -155,8 +155,8 @@ router.get('/make-admin', (req, res) => {
   const uid = req.query.uid;
   let clientIP = req.headers['x-forwarded-for'] || req.connection.remoteAddress;
   if(!ip.isEqual(ip.address(), clientIP) || !uid){
-	res.json({access:'denied'});
-	return;
+  res.json({access:'denied'});
+  return;
   }
 
   // Grant access
@@ -174,7 +174,7 @@ router.get('/admin-profile', (req, res) => {
   const indexOfUser = users.findIndex(i => i.uid === uid);
   if(uid!=='' && indexOfUser>-1 && users[indexOfUser].isAdmin){
     res.json({access:'granted '+permissionEscalationFlag});
-	return;
+  return;
   }
   res.json({access:'denied'});
 });

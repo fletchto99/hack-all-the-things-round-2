@@ -7,12 +7,12 @@ const server = app.listen(port);
 const router = express.Router();
 
 router.use((req, res, next)=>{
-	next();
+  next();
 });
 
 router.get('/logger', (req, res) => {
   console.log(req.query);
-	res.json({thank:'you'});
+  res.json({thank:'you'});
 });
 
 app.use('/api', router);

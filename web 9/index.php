@@ -22,88 +22,88 @@ $password = 'july4th';
     $loginSuccess = false;
     $invalidMsg = '';
     if(sizeof($_POST)===2 && in_array($_POST['username'], $usernames, false) && $_POST['password']===$password){
-    	$loginSuccess = true;
+      $loginSuccess = true;
     }else if(sizeof($_POST)===2 && in_array($_POST['username'], $usernames, false) && $easyMode===true){
-    	$invalidMsg = 'Wrong password';
-    	$errorClass = 'is-invalid';
+      $invalidMsg = 'Wrong password';
+      $errorClass = 'is-invalid';
     }else if(sizeof($_POST)>0){
-    	$invalidMsg = 'Wrong username or password';
-    	$errorClass = 'is-invalid';
+      $invalidMsg = 'Wrong username or password';
+      $errorClass = 'is-invalid';
     }
     ?>
     <title>E-Corp CEO Login</title>
   </head>
   <body>
-  	<div class="container">
-  		<div class="row justify-content-center">
-			    
-			<?php if(!$loginSuccess){ ?>
-  				<div class="col-sm-4">
-			    	<h1>E-Corp Portal Login</h1>
-				    <?php if($errorClass!==''){ ?>
-					    <div class="alert alert-danger" role="alert">
-						  <?=$invalidMsg?>
-						</div>
-					<?php } ?>
+    <div class="container">
+      <div class="row justify-content-center">
+          
+      <?php if(!$loginSuccess){ ?>
+          <div class="col-sm-4">
+            <h1>E-Corp Portal Login</h1>
+            <?php if($errorClass!==''){ ?>
+              <div class="alert alert-danger" role="alert">
+              <?=$invalidMsg?>
+            </div>
+          <?php } ?>
 
-				    <form method="post">
-					  <div class="form-group">
-					    <label for="username">Username</label>
-					    <input type="text" class="form-control <?=$errorClass?>" id="username" placeholder="Enter username" name="username">
-					  </div>
-					  <div class="form-group">
-					    <label for="password">Password</label>
-					    <input type="password" class="form-control <?=$errorClass?>" id="password" placeholder="Password" name="password">
-					  </div>
-					  <div class="form-check">
-					    <input type="checkbox" class="form-check-input" id="rememberMe">
-					    <label class="form-check-label" for="rememberMe">Remember me</label>
-					  </div>
-					  <br>
-					  <button type="submit" class="btn btn-primary">Login</button>
-					</form>
-				</div>
+            <form method="post">
+            <div class="form-group">
+              <label for="username">Username</label>
+              <input type="text" class="form-control <?=$errorClass?>" id="username" placeholder="Enter username" name="username">
+            </div>
+            <div class="form-group">
+              <label for="password">Password</label>
+              <input type="password" class="form-control <?=$errorClass?>" id="password" placeholder="Password" name="password">
+            </div>
+            <div class="form-check">
+              <input type="checkbox" class="form-check-input" id="rememberMe">
+              <label class="form-check-label" for="rememberMe">Remember me</label>
+            </div>
+            <br>
+            <button type="submit" class="btn btn-primary">Login</button>
+          </form>
+        </div>
 
-			<?php }else{ ?>
+      <?php }else{ ?>
 
-  				<div class="col-sm-12">
-  					<h1>E-Corp Portal</h1>
-					<h3>Employee Data</h3>
-					<table class="table table-dark">
-					  <thead>
-					    <tr>
-					      <th scope="col">#</th>
-					      <th scope="col">First</th>
-					      <th scope="col">Last</th>
-					      <th scope="col">Title</th>
-					    </tr>
-					  </thead>
-					  <tbody>
-					    <tr>
-					      <th scope="row">1</th>
-					      <td>Phillip Price</td>
-					      <td>Price</td>
-					      <td>CEO</td>
-					    </tr>
-					    <tr>
-					      <th scope="row">2</th>
-					      <td>Scott</td>
-					      <td>Knowles</td>
-					      <td>CTO</td>
-					    </tr>
-					    <tr>
-					      <th scope="row">3</th>
-					      <td>James</td>
-					      <td>Plouffe</td>
-					      <td>EVP of Technology</td>
-					    </tr>
-					  </tbody>
-					</table>
-					<p class="font-italic">flag{s0m3_p4sswordz_caN_be_gueSSed}</p>
-  				</div>
-			<?php } ?>
-  		</div>
-  	</div>
+          <div class="col-sm-12">
+            <h1>E-Corp Portal</h1>
+          <h3>Employee Data</h3>
+          <table class="table table-dark">
+            <thead>
+              <tr>
+                <th scope="col">#</th>
+                <th scope="col">First</th>
+                <th scope="col">Last</th>
+                <th scope="col">Title</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <th scope="row">1</th>
+                <td>Phillip Price</td>
+                <td>Price</td>
+                <td>CEO</td>
+              </tr>
+              <tr>
+                <th scope="row">2</th>
+                <td>Scott</td>
+                <td>Knowles</td>
+                <td>CTO</td>
+              </tr>
+              <tr>
+                <th scope="row">3</th>
+                <td>James</td>
+                <td>Plouffe</td>
+                <td>EVP of Technology</td>
+              </tr>
+            </tbody>
+          </table>
+          <p class="font-italic">flag{s0m3_p4sswordz_caN_be_gueSSed}</p>
+          </div>
+      <?php } ?>
+      </div>
+    </div>
 
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
