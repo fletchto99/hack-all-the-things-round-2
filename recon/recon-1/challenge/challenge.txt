@@ -1,0 +1,2 @@
+title: Unknown Location
+challenge text: Who is the architect of this property? (format: flag{Firstname_Lastname} or flag{Firstname_Middlename_Lastname} if applicable).
