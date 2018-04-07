@@ -1,2 +1,2 @@
-title: security.
+title: For Admin Eyes Only
 challenge text: <link to chatbot>

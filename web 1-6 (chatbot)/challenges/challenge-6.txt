@@ -1,0 +1,2 @@
+title: The Real Flag
+challenge text: <link to chatbot> \nYou do not have the real flag. Obtain it.
