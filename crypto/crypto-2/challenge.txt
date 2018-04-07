@@ -1,3 +1,4 @@
+title: Beep Beep Richie!
 format: flag{decipheredtext}
 
 .-- .... .- - .- .-. . - .... . ... . -.. --- - ... .- -. -.. .-.. .. -. . ...

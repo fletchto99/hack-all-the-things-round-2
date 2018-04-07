@@ -52,7 +52,7 @@ router.post('/send', function(req, res){
   }
 
   // How are you doing?
-  if(natural.JaroWinklerDistance(query, 'How are you doing?')>.9 || natural.JaroWinklerDistance(query, 'How do you do?')>.9){
+  if(natural.JaroWinklerDistance(query, 'How are you doing?')>.9 || natural.JaroWinklerDistance(query, 'How do you do?')>.9 || (natural.JaroWinklerDistance(query, 'How are you?')>.9 && query.toLowerCase().indexOf('how')>-1)){
     res.json({message: 'I\'m doing well thanks.' });
     return;
   }

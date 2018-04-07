@@ -1,2 +1,3 @@
 title: security.
-challenge text: <link to chatbot>
+challenge text: <link to chatbot> \nA proposed standard for responsible disclosure.
+hint: Where is it? you could say it's location is ".well-known"
