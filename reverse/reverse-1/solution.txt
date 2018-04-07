@@ -1,0 +1,3 @@
+it is js processed by: http://www.jsfuck.com/
+put a break point in and run the js. need to change the if condition so that the if statement takes the desireable.
+flag{what-is-this-code}
