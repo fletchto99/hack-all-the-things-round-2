@@ -1,3 +1,6 @@
 it is js processed by: http://www.jsfuck.com/
-put a break point in and run the js. need to change the if condition so that the if statement takes the desireable.
+Make an html file, put the code in script tags, put a break point in and run the js.
+Or use http://codertab.com/jsunfuck (but it is slow to run, even slower than clicking through all the break points)
+You need to change the turnary opperator condition so that it takes the desireable path (ie. 0!=[] to 0==0).
+
 flag{what-is-this-code}
